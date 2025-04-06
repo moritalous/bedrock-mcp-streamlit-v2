@@ -4,4 +4,10 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "boto3>=1.37.28",
+    "boto3-stubs[full]>=1.37.28",
+    "mcp>=1.6.0",
+    "pyyaml>=6.0.2",
+    "streamlit>=1.44.1",
+]

@@ -1,0 +1,41 @@
+{
+    "chat_history_dir": "chat_history",
+    "mcp_config_file": "config/mcp_config.json",
+    "models": {
+        "us.amazon.nova-pro-v1:0": {
+            "cache_support": [
+                "system"
+            ]
+        },
+        "us.amazon.nova-lite-v1:0": {
+            "cache_support": [
+                "system"
+            ]
+        },
+        "us.amazon.nova-micro-v1:0": {
+            "cache_support": [
+                "system"
+            ]
+        },
+        "us.anthropic.claude-3-7-sonnet-20250219-v1:0": {
+            "cache_support": [
+                "system",
+                "messages",
+                "tools"
+            ]
+        },
+        "us.anthropic.claude-3-5-sonnet-20241022-v2:0": {
+            "cache_support": []
+        },
+        "us.anthropic.claude-3-5-haiku-20241022-v1:0": {
+            "cache_support": [
+                "system",
+                "messages",
+                "tools"
+            ]
+        },
+        "us.anthropic.claude-3-haiku-20240307-v1:0": {
+            "cache_support": []
+        }
+    }
+}
