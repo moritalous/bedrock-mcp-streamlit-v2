@@ -1,0 +1,43 @@
+{
+    "mcpServers": {
+        "nova-canvas": {
+            "command": "uvx",
+            "args": [
+                "awslabs.nova-canvas-mcp-server@latest"
+            ],
+            "env": {
+                "AWS_PROFILE": "default",
+                "AWS_REGION": "us-east-1",
+                "FASTMCP_LOG_LEVEL": "ERROR"
+            }
+        },
+        "cost-analysis": {
+            "command": "uvx",
+            "args": [
+                "awslabs.cost-analysis-mcp-server@latest"
+            ],
+            "env": {
+                "FASTMCP_LOG_LEVEL": "ERROR",
+                "AWS_PROFILE": "default"
+            }
+        },
+        "aws-documentation": {
+            "command": "uvx",
+            "args": [
+                "awslabs.aws-documentation-mcp-server@latest"
+            ],
+            "env": {
+                "FASTMCP_LOG_LEVEL": "ERROR"
+            }
+        },
+        "cdk": {
+            "command": "uvx",
+            "args": [
+                "awslabs.cdk-mcp-server@latest"
+            ],
+            "env": {
+                "FASTMCP_LOG_LEVEL": "ERROR"
+            }
+        }
+    }
+}

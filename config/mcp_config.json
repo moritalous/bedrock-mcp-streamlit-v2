@@ -26,6 +26,22 @@
                 "-i",
                 "mcp/sequentialthinking"
             ]
+        },
+        "filesystem": {
+            "command": "docker",
+            "args": [
+                "run",
+                "-i",
+                "--rm",
+                "-u",
+                "1000:1000",
+                "-v",
+                "./projects:/projects",
+                "-w",
+                "/projects",
+                "mcp/filesystem",
+                "/projects"
+            ]
         }
     }
 }
