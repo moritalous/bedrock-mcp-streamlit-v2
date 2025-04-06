@@ -1,5 +1,5 @@
 [project]
-name = "bedrock-multimodal-streamlit"
+name = "bedrock-mcp-streamlit-v2"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
