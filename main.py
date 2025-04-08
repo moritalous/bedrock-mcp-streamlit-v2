@@ -104,8 +104,7 @@ def process_user_message(prompt, messages):
         user_content = [{"text": prompt.text}]
 
         for f in prompt.files:
-            file_format = f.type.split("/")[1]
-            if file_format in format["image"]:
+            if (file_format := f.type.split("/")[1]) in format["image"]:
                 user_content.append(
                     {
                         "image": {
@@ -116,12 +115,12 @@ def process_user_message(prompt, messages):
                 )
                 st.image(f)
 
-            elif file_format in format["document"]:
+            elif (ext := os.path.splitext(f.name)[1][1:]) in format["document"]:
                 name = str(uuid.uuid4())
                 user_content.append(
                     {
                         "document": {
-                            "format": file_format,
+                            "format": ext,
                             "name": name,
                             "source": {"bytes": f.getvalue()},
                         }
