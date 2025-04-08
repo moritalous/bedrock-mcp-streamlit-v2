@@ -135,6 +135,24 @@ def process_user_message(prompt, messages):
         messages.append(user_message)
 
 
+def get_messages_with_cache_point(messages_without_cache_point):
+    messages_with_cache_point = []
+    user_turns_processed = 0
+
+    for message in reversed(messages_without_cache_point):
+        m = copy.deepcopy(message)
+
+        if message["role"] == "user" and user_turns_processed < 2:
+            m["content"].append({"cachePoint": {"type": "default"}})
+            user_turns_processed += 1
+
+        messages_with_cache_point.append(m)
+
+    messages_with_cache_point.reverse()
+
+    return messages_with_cache_point
+
+
 async def process_assistant_message(messages):
     """Processes an assistant message, calling the Bedrock API with MCP tools.
 
@@ -164,22 +182,17 @@ async def process_assistant_message(messages):
             tools.append({"cachePoint": {"type": "default"}})
 
         while True:
-            # Cache setting(messages)
-            send_message = copy.deepcopy(messages)
-            if st.session_state.enable_prompt_cache_messages:
-                send_message[-1]["content"].append({"cachePoint": {"type": "default"}})
-
             stream_response = client.converse_stream(
                 modelId=st.session_state.model_id,
-                messages=send_message,
+                messages=get_messages_with_cache_point(messages),
                 system=systen_message,
                 toolConfig={"tools": tools},
             )
 
             response = process_streaming(stream_response)
-            print(response["metadata"])
-
             messages.append(response["output"]["message"])
+
+            print(json.dumps(response["metadata"]))
 
             if response["stopReason"] == "tool_use":
                 tool_requests = [
