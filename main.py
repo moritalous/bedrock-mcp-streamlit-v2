@@ -142,8 +142,13 @@ def get_messages_with_cache_point(messages_without_cache_point):
         m = copy.deepcopy(message)
 
         if message["role"] == "user" and user_turns_processed < 2:
-            m["content"].append({"cachePoint": {"type": "default"}})
-            user_turns_processed += 1
+            if (
+                len([c for c in m["content"] if "text" in c]) > 0
+            ):  # Do not add cachePoint if there is no Text block (this will cause an error in Nova models)
+                m["content"].append({"cachePoint": {"type": "default"}})
+                user_turns_processed += 1
+            else:
+                st.write("text is not contain")
 
         messages_with_cache_point.append(m)
 
