@@ -2,6 +2,9 @@
     "chat_history_dir": "chat_history",
     "mcp_config_file": "config/mcp_config.json",
     "models": {
+        "us.amazon.nova-premier-v1:0": {
+            "cache_support": []
+        },
         "us.amazon.nova-pro-v1:0": {
             "cache_support": [
                 "system"
