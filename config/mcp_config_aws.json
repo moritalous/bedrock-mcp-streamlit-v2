@@ -1,6 +1,6 @@
 {
     "mcpServers": {
-        "nova-canvas": {
+        "novacanvas": {
             "command": "uvx",
             "args": [
                 "awslabs.nova-canvas-mcp-server@latest"
@@ -11,7 +11,7 @@
                 "FASTMCP_LOG_LEVEL": "ERROR"
             }
         },
-        "cost-analysis": {
+        "costanalysis": {
             "command": "uvx",
             "args": [
                 "awslabs.cost-analysis-mcp-server@latest"
@@ -21,7 +21,7 @@
                 "AWS_PROFILE": "default"
             }
         },
-        "aws-documentation": {
+        "awsdocumentation": {
             "command": "uvx",
             "args": [
                 "awslabs.aws-documentation-mcp-server@latest"
